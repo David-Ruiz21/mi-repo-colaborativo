@@ -1,0 +1,61 @@
+Pregunta 2
+
+        int n;
+        int horas;
+        int pagoPorHora;
+        int total = 0;
+        Console.Write("Ingrese la cantidad de trabajadores: ");
+        n = int.Parse(Console.ReadLine());
+        for (int i = 1; i <= n; i++)
+        {
+            Console.WriteLine($"Trabajador {i}:");
+            Console.Write("Horas trabajadas: ");
+            horas = int.Parse(Console.ReadLine());
+            Console.Write("Pago por hora: ");
+            pagoPorHora = int.Parse(Console.ReadLine());
+            total += horas * pagoPorHora;
+        }
+        Console.WriteLine($"\nMonto total a pagar: {total}");
+
+Pregunta 3
+
+        string genero;
+        int especialidad;
+        double precioBase;
+        double descuento = 0;
+        double precioFinal;
+        Console.Write("Ingrese el género (Femenino/Masculino): ");
+        genero = Console.ReadLine();
+        Console.WriteLine("Especialidades:");
+        Console.WriteLine("1 = Cardiología");
+        Console.WriteLine("2 = Fisioterapia");
+        Console.WriteLine("3 = Oftalmología");
+        Console.WriteLine("4 = Neonatología");
+        Console.Write("Ingrese el número de especialidad: ");
+        especialidad = int.Parse(Console.ReadLine());
+        Console.Write("Ingrese el precio base de la atención: ");
+        precioBase = double.Parse(Console.ReadLine());
+        if (genero == "Femenino")
+        {
+            if (especialidad == 1)
+                descuento = 33.20;
+            else if (especialidad == 2)
+                descuento = 25.50;
+            else if (especialidad == 3)
+                descuento = 7.00;
+            else if (especialidad == 4)
+                descuento = 16.30;
+        }
+        else if (genero == "Masculino")
+        {
+            if (especialidad == 1)
+                descuento = 38.00;
+            else if (especialidad == 2)
+                descuento = 10.50;
+            else if (especialidad == 3)
+                descuento = 35.00;
+            else if (especialidad == 4)
+                descuento = 5.00;
+        }
+        precioFinal = precioBase - (precioBase * descuento / 100);
+        Console.WriteLine($"\nPrecio final a pagar: {precioFinal:F2}");
