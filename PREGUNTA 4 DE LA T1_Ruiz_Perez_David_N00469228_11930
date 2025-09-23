@@ -1,28 +1,100 @@
 Version 1: FOR
 
-        for (int i = 1; i <= 5; i++)
+        int cantidadCampañas;
+        Console.Write("Ingrese la cantidad de campañas a evaluar: ");
+        cantidadCampañas = int.Parse(Console.ReadLine());
+        for (int i = 1; i <= cantidadCampañas; i++)
         {
-            Console.WriteLine($"Tabla del {i}:");
-            for (int j = 1; j <= 10; j++)
+            string nombre;
+            int medio;
+            int presupuesto;
+            int duracion;
+            Console.WriteLine($"\nCampaña {i}:");
+            Console.Write("Nombre de la campaña: ");
+            nombre = Console.ReadLine();
+            Console.Write("Medio (1=TV, 2=Radio, 3=Redes): ");
+            medio = int.Parse(Console.ReadLine());
+            Console.Write("Presupuesto: ");
+            presupuesto = int.Parse(Console.ReadLine());
+            Console.Write("Duración en días: ");
+            duracion = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Campaña: {nombre}");
+            switch (medio)
             {
-                Console.WriteLine($"{i} x {j} = {i * j}");
+                case 1:
+                    Console.WriteLine("Medio: Televisión");
+                    break;
+                case 2:
+                    Console.WriteLine("Medio: Radio");
+                    break;
+                case 3:
+                    Console.WriteLine("Medio: Redes Sociales");
+                    break;
+                default:
+                    Console.WriteLine("Medio no válido");
+                    break;
             }
-            Console.WriteLine();
+            if (presupuesto > 5000)
+            {
+                if (duracion > 10)
+                    Console.WriteLine("Campaña de alto impacto");
+                else
+                    Console.WriteLine("Campaña moderada");
+            }
+            else
+            {
+                if (duracion > 10)
+                    Console.WriteLine("Campaña moderada");
+                else
+                    Console.WriteLine("Campaña básica");
+            }
+        }
 
 Version 2: ANIDADA
 
-        int i = 1;
-        while (i <= 5)
+        string nombre;
+        int medio;
+        int presupuesto;
+        int duracion;
+        Console.Write("Nombre de la campaña: ");
+        nombre = Console.ReadLine();
+        Console.Write("Medio (1=TV, 2=Radio, 3=Redes): ");
+        medio = int.Parse(Console.ReadLine());
+        Console.Write("Presupuesto: ");
+        presupuesto = int.Parse(Console.ReadLine());
+        Console.Write("Duración en días: ");
+        duracion = int.Parse(Console.ReadLine());
+        Console.WriteLine($"\nCampaña: {nombre}");
+        switch (medio)
         {
-            Console.WriteLine($"Tabla del {i}:");
-            int j = 1;
-            while (j <= 10)
-            {
-                if (i * j > 0) // estructura condicional anidada
-                {
-                    Console.WriteLine($"{i} x {j} = {i * j}");
-                }
-                j++;
-            }
-            Console.WriteLine();
-            i++;
+            case 1:
+                Console.WriteLine("Medio: Televisión");
+                if (presupuesto > 5000 && duracion > 10)
+                    Console.WriteLine("Campaña de alto impacto");
+                else if (presupuesto > 5000 || duracion > 10)
+                    Console.WriteLine("Campaña moderada");
+                else
+                    Console.WriteLine("Campaña básica");
+                break;
+            case 2:
+                Console.WriteLine("Medio: Radio");
+                if (presupuesto > 5000 && duracion > 10)
+                    Console.WriteLine("Campaña de alto impacto");
+                else if (presupuesto > 5000 || duracion > 10)
+                    Console.WriteLine("Campaña moderada");
+                else
+                    Console.WriteLine("Campaña básica");
+                break;
+            case 3:
+                Console.WriteLine("Medio: Redes Sociales");
+                if (presupuesto > 5000 && duracion > 10)
+                    Console.WriteLine("Campaña de alto impacto");
+                else if (presupuesto > 5000 || duracion > 10)
+                    Console.WriteLine("Campaña moderada");
+                else
+                    Console.WriteLine("Campaña básica");
+                break;
+            default:
+                Console.WriteLine("Medio no válido");
+                break;
+        }
